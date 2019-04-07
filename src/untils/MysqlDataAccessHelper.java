@@ -26,13 +26,16 @@ public class MysqlDataAccessHelper {
        System.out.println(" SQL State:" + ex.getSQLState());
        System.out.println(" Error Code:" + ex.getErrorCode());
    }
+   public Connection getCon(){
+       return conn;
+   }
 
     public MysqlDataAccessHelper() {
          try{
       Driver driver = new org.gjt.mm.mysql.Driver();// nap driver
        DriverManager.registerDriver(driver);// dang ky driver
 
-       String url = "jdbc:mysql://localhost:3306/quanlythuvien";
+       String url = "jdbc:mysql://localhost:3306/quanlythuvien?useUnicode=yes&characterEncoding=UTF-8";
        conn  = DriverManager.getConnection(url, "root", "");//tao ket noi den co so du lieu
 
        } catch(SQLException ex){// xu ly ngoai le
